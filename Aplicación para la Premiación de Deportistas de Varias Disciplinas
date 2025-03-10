@@ -1,0 +1,33 @@
+# Definición de las estructuras de datos
+disciplinas = {}  # Mapa para asociar disciplinas con los deportistas y sus medallas
+
+# Función para agregar una disciplina
+def agregar_disciplina(nombre_disciplina):
+    if nombre_disciplina not in disciplinas:
+        disciplinas[nombre_disciplina] = {}  # Mapa para almacenar deportistas y medallas
+        print(f"Disciplina '{nombre_disciplina}' registrada exitosamente.")
+    else:
+        print(f"La disciplina '{nombre_disciplina}' ya está registrada.")
+
+# Función para registrar un deportista y su medalla
+def registrar_deportista(nombre_disciplina, nombre_deportista, medalla):
+    if nombre_disciplina in disciplinas:
+        disciplinas[nombre_disciplina][nombre_deportista] = medalla
+        print(f"Deportista '{nombre_deportista}' registrado con medalla '{medalla}' en '{nombre_disciplina}'.")
+    else:
+        print(f"La disciplina '{nombre_disciplina}' no existe.")
+
+# Función para mostrar los ganadores de una disciplina
+def mostrar_ganadores(nombre_disciplina):
+    if nombre_disciplina in disciplinas:
+        print(f"Gananadores en la disciplina '{nombre_disciplina}':")
+        for deportista, medalla in disciplinas[nombre_disciplina].items():
+            print(f"{deportista} - Medalla: {medalla}")
+    else:
+        print(f"La disciplina '{nombre_disciplina}' no existe.")
+
+# Ejemplo de uso
+agregar_disciplina("100 metros")
+registrar_deportista("100 metros", "Usain Bolt", "Oro")
+registrar_deportista("100 metros", "Carl Lewis", "Plata")
+mostrar_ganadores("100 metros")

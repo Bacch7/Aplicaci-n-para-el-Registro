@@ -1,0 +1,45 @@
+# Definición de las estructuras de datos
+equipos = {}  # Mapa para almacenar equipos y sus jugadores
+
+# Función para agregar un equipo
+def agregar_equipo(nombre_equipo):
+    if nombre_equipo not in equipos:
+        equipos[nombre_equipo] = set()  # Crear un conjunto vacío de jugadores
+        print(f"Equipo '{nombre_equipo}' registrado exitosamente.")
+    else:
+        print(f"El equipo '{nombre_equipo}' ya está registrado.")
+
+# Función para agregar un jugador a un equipo
+def agregar_jugador(nombre_equipo, nombre_jugador):
+    if nombre_equipo in equipos:
+        equipos[nombre_equipo].add(nombre_jugador)  # Agregar jugador al conjunto del equipo
+        print(f"Jugador '{nombre_jugador}' agregado al equipo '{nombre_equipo}'.")
+    else:
+        print(f"El equipo '{nombre_equipo}' no existe.")
+
+# Función para mostrar los jugadores de un equipo
+def mostrar_jugadores(nombre_equipo):
+    if nombre_equipo in equipos:
+        jugadores = equipos[nombre_equipo]
+        print(f"Jugadores del equipo '{nombre_equipo}': {', '.join(jugadores)}")
+    else:
+        print(f"El equipo '{nombre_equipo}' no existe.")
+
+# Función para eliminar un jugador
+def eliminar_jugador(nombre_equipo, nombre_jugador):
+    if nombre_equipo in equipos:
+        if nombre_jugador in equipos[nombre_equipo]:
+            equipos[nombre_equipo].remove(nombre_jugador)
+            print(f"Jugador '{nombre_jugador}' eliminado del equipo '{nombre_equipo}'.")
+        else:
+            print(f"El jugador '{nombre_jugador}' no está en el equipo '{nombre_equipo}'.")
+    else:
+        print(f"El equipo '{nombre_equipo}' no existe.")
+
+# Ejemplo de uso
+agregar_equipo("Real Madrid")
+agregar_jugador("Real Madrid", "Karim Benzema")
+agregar_jugador("Real Madrid", "Vinícius Júnior")
+mostrar_jugadores("Real Madrid")
+eliminar_jugador("Real Madrid", "Karim Benzema")
+mostrar_jugadores("Real Madrid")

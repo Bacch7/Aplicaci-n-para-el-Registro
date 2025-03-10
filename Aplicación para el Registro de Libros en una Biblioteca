@@ -1,0 +1,34 @@
+# Definición de las estructuras de datos
+biblioteca = {}  # Mapa para asociar libros con su autor y disponibilidad
+
+# Función para agregar un libro
+def agregar_libro(titulo, autor, categoria):
+    if titulo not in biblioteca:
+        biblioteca[titulo] = {"autor": autor, "categoria": categoria, "disponibilidad": True}
+        print(f"Libro '{titulo}' registrado exitosamente.")
+    else:
+        print(f"El libro '{titulo}' ya está registrado.")
+
+# Función para mostrar la información de un libro
+def mostrar_libro(titulo):
+    if titulo in biblioteca:
+        libro = biblioteca[titulo]
+        disponibilidad = "Disponible" if libro["disponibilidad"] else "No disponible"
+        print(f"Libro: {titulo}\nAutor: {libro['autor']}\nCategoría: {libro['categoria']}\nDisponibilidad: {disponibilidad}")
+    else:
+        print(f"El libro '{titulo}' no está registrado.")
+
+# Función para cambiar la disponibilidad de un libro
+def cambiar_disponibilidad(titulo, disponibilidad):
+    if titulo in biblioteca:
+        biblioteca[titulo]["disponibilidad"] = disponibilidad
+        estado = "Disponible" if disponibilidad else "No disponible"
+        print(f"La disponibilidad del libro '{titulo}' ha sido cambiada a '{estado}'.")
+    else:
+        print(f"El libro '{titulo}' no está registrado.")
+
+# Ejemplo de uso
+agregar_libro("Cien años de soledad", "Gabriel García Márquez", "Ficción")
+mostrar_libro("Cien años de soledad")
+cambiar_disponibilidad("Cien años de soledad", False)
+mostrar_libro("Cien años de soledad")
